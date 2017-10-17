@@ -1,0 +1,14 @@
+name: loulou
+
+up:
+  - ruby:
+      version:  2.4.2
+  - bundler
+packages:
+  - git@github.com:Shopify/dev-shopify.git
+
+commands:
+  build:
+    syntax: ""
+    desc:   'Start a console'
+    run:    'bin/rake build'
