@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.4.2'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -10,11 +11,16 @@ gem 'rails', '~> 5.1.4'
 gem 'redcarpet'
 gem 'smart_properties'
 gem 'puma', '~> 3.7'
+gem 'wkhtmltopdf-binary'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec'
   gem 'rspec-rails', '~> 3.6'
+  gem 'byebug'
+  gem 'pry'
+  gem 'pry-byebug'
+  gem 'pry-rails'
 end
 
 group :development do
