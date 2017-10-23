@@ -5,28 +5,31 @@ class Book
 
   attr_accessor(
     :chansons,
+    :name,
     :path,
   )
 
-  def initialize(titres, attributes = {})
-    super(attributes)
+  FILENAME = "book.pdf"
 
-    titres.each do |titre|
-      add_chanson(titre)
-    end
-  end
-
-  def add_chanson(name)
-    chanson = Chanson.new(name: name)
+  def add_chanson(titre)
+    self.chansons ||= []
+    chanson = Chanson.new(titre: titre)
     self.chansons << chanson
   end
 
   def html
-    @html = chansons.map(&:html)
+    @html = chansons.map(&:html).join
   end
 
   def pdf
     kit.to_pdf
+  end
+
+  def find_titles!
+    files = Dir.new(path).select{|file| !File.directory? file}
+    files.each {|file| add_chanson(file) }
+
+    self
   end
 
   def save!

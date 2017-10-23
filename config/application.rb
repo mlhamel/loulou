@@ -15,5 +15,9 @@ module Loulou
     config.load_defaults 5.1
     config.api_only = true
     config.chanson_path = "#{Rails.root}/chansons"
+
+    config.autoload_paths << Rails.root + 'app/operation'
+    config.autoload_paths << Rails.root + 'lib'
+    config.eager_load = true
   end
 end
